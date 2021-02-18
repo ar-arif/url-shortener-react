@@ -1,0 +1,28 @@
+.home {
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	background: var(--dark);
+}
+
+.sing__in__hide{
+	display: none;
+}
+
+p {
+	font-family: sans-serif;
+	color: white;
+	margin: 1rem 0;
+	text-align:center;
+}
+
+.phone__btn__text {
+	text-transform: initial;
+	font-family: inherit;
+}
+
+.other__login{
+	display: none;
+}

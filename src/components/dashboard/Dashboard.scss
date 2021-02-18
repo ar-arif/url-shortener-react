@@ -1,0 +1,47 @@
+
+// dashboard
+.dashboard {
+	background: grey;
+	height: 100vh;
+	.hideAlert {
+		position: relative;
+		display: none;
+	}
+	.closeAlert {
+		position: absolute;
+		right: 5%;
+		font-size: 1.2rem;
+		cursor: pointer;
+	}
+}
+
+// input__area
+.input__area {
+	width: 90%;
+	margin: 0 auto;
+
+	.input__fild{
+		margin-bottom: 7px;
+	}
+	:first-child {
+		width: 100%;
+	}
+	:last-child {
+		width: 100%;
+		font-family: sans-serif;
+		text-transform: none;
+		font-weight: bold;
+	}
+}
+
+// table__area
+.table__area {
+	width: 90%;
+	margin: 0 auto;
+	.MuiTableContainer-root {
+		max-height: 75vh;
+	}
+	.url__link{
+		color: white;
+	}
+}
