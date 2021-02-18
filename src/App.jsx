@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { HashRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
 import Home from "./components/home/Home";
 import Redirect from "./components/functional_logics/Redirect";
@@ -9,7 +9,7 @@ const App = () => {
 			<Router>
 				<Switch>
 					<Route exact path="/" component={Home} />
-					<Route path="/:id" component={Redirect} />
+					<Route exact path="/:id" component={Redirect} />
 				</Switch>
 			</Router>
 		</div>

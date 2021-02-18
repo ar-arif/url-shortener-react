@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { db } from "../api/firebase";
 import { useState, useEffect } from "react";
 
+	let idFound = false;
 const Redirect = () => {
 	const [allUids, setAllUids] = useState([]);
 	const [allTables, setAllTables] = useState([]);
@@ -36,12 +37,14 @@ const Redirect = () => {
 	useEffect(() => {
 		for (let i = 0; i < allTables.length; i++) {
 			if (allTables[i].shortID === id) {
+				idFound = true;
 				setCenterText("Redirecting to URL ✈️")
 				window.location.href = allTables[i].fullLink;
 				break;
 			} else if (
-				allTables.length - 1 === i &&
-				allTables[i].shortID !== id
+				allTables.length-1 === i &&
+				allTables[i].shortID !== id &&
+				idFound === false
 			) {
 				setCenterText("Sorry, your URL not found 😓");
 			}

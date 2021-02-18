@@ -2,7 +2,7 @@ import { nanoid } from "nanoid";
 import { db } from "../api/firebase";
 
 const GenerateLink = (fullLink, uid) => {
-	const shortID = nanoid(7);
+	const shortID = nanoid(10);
 	const date = new Date().toDateString();
 	const timestamp = Date.now();
 	const formatDate =
