@@ -14,7 +14,7 @@ import { useState, useEffect } from "react";
 const MyTable = ({ userUID }) => {
 	const [tableData, setTableData] = useState([]);
 	useEffect(() => {
-		db.collection(`users/${userUID}/tables`).onSnapshot((snapshot) => {
+		db.collection(`users/${userUID}/tables`).orderBy('timestamp', 'desc').onSnapshot((snapshot) => {
 			setTableData(snapshot.docs.map((doc) => doc.data()));
 		});
 	}, [userUID]);
