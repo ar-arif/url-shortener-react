@@ -14,9 +14,11 @@ import { useState, useEffect } from "react";
 const MyTable = ({ userUID }) => {
 	const [tableData, setTableData] = useState([]);
 	useEffect(() => {
-		db.collection(`users/${userUID}/tables`).orderBy('timestamp', 'desc').onSnapshot((snapshot) => {
-			setTableData(snapshot.docs.map((doc) => doc.data()));
-		});
+		db.collection(`users/${userUID}/tables`)
+			.orderBy("timestamp", "desc")
+			.onSnapshot((snapshot) => {
+				setTableData(snapshot.docs.map((doc) => doc.data()));
+			});
 	}, [userUID]);
 
 	return (
@@ -26,8 +28,13 @@ const MyTable = ({ userUID }) => {
 					<TableHead>
 						<TableRow>
 							<TableCell align="left">
-								<strong>Date</strong>
+								<strong>Created</strong>
 							</TableCell>
+							{
+								// <TableCell align="left">
+								// 	<strong>Clicked</strong>
+								// </TableCell>
+							}
 							<TableCell align="left">
 								<strong>Short Link</strong>
 							</TableCell>
@@ -45,6 +52,7 @@ const MyTable = ({ userUID }) => {
 								time={data.time}
 								date={data.date}
 								timestamp={data.timestamp}
+								clicked={data.clicked}
 							/>
 						))}
 					</TableBody>

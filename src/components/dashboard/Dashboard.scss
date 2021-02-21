@@ -1,8 +1,14 @@
+body {
+  // overflow: hidden; /* Hide scrollbars */
+}
+
 
 // dashboard
 .dashboard {
-	background: grey;
-	height: 100vh;
+	background: #1a252f;
+	// background: var(--dark);
+	// height: 100vh;
+	min-height: 100vh;
 	.hideAlert {
 		position: relative;
 		display: none;
@@ -38,10 +44,45 @@
 .table__area {
 	width: 90%;
 	margin: 0 auto;
+	padding-bottom: 20px;
 	.MuiTableContainer-root {
 		max-height: 75vh;
 	}
 	.url__link{
 		color: white;
 	}
+}
+
+
+// profile__section
+.profile__section{
+	color: white;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 90%;
+    margin: 0 auto;
+    font-family: sans-serif;
+
+    .profile{
+    	display: flex;
+    	align-items: center;
+
+    	#avatar{
+    		border-radius: 50px;
+    		width: 3rem;
+    	}
+
+    	.user__details{
+    		margin-left: .5rem;
+    	}
+    }
+
+
+
+
+    .sing-out__section{
+    	font-size: 1.5rem;
+    	cursor: pointer;
+    }
 }

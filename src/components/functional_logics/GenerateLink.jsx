@@ -6,7 +6,7 @@ const GenerateLink = (fullLink, uid) => {
 	const date = new Date().toDateString();
 	const formatDate =
 		date.slice(8, 10) + "-" + date.slice(4, 7) + "-" + date.slice(11);
-	db.collection(`users/${uid}/tables`).add({
+	db.collection(`users/${uid}/tables`).doc(shortID).set({
 		shortID,
 		fullLink,
 		timestamp: firebase.firestore.FieldValue.serverTimestamp(),
@@ -15,6 +15,8 @@ const GenerateLink = (fullLink, uid) => {
 			minute: "2-digit",
 		}),
 		date: formatDate,
+		uid,
+		clicked: 0,
 	});
 };
 

@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import { db } from "../api/firebase";
 import { useState, useEffect } from "react";
 
-	let idFound = false;
+let idFound = false;
 const Redirect = () => {
 	const [allUids, setAllUids] = useState([]);
 	const [allTables, setAllTables] = useState([]);
@@ -28,8 +28,8 @@ const Redirect = () => {
 	useEffect(() => {
 		allUids.forEach((uid) => {
 			db.collection(`users/${uid}/tables`).onSnapshot((snapshot) => {
-				const tables = snapshot.docs
-				setAllTables(tables.map((table) => table.data()))
+				const tables = snapshot.docs;
+				setAllTables(tables.map((table) => table.data()));
 			});
 		});
 	}, [allUids]);
@@ -38,15 +38,29 @@ const Redirect = () => {
 		for (let i = 0; i < allTables.length; i++) {
 			if (allTables[i].shortID === id) {
 				idFound = true;
-				setCenterText("Redirecting to URL ✈️")
+				setCenterText("Redirecting to URL ✈️");
+
+				// const c = allTables[i].clicked
+
+				// db.collection(`users/${allTables[i].uid}/tables`)
+				// 	.doc(allTables[i].shortID)
+				// 	.update({
+				// 		clicked: 1
+				// 	})
+				// 	.then(() => {
+				// 		console.log("Document successfully updated!");
+				// 	});
+
+
 				window.location.href = allTables[i].fullLink;
+				// console.log("sdsa")
 				break;
 			} else if (
-				allTables.length-1 === i &&
+				allTables.length - 1 === i &&
 				allTables[i].shortID !== id &&
 				idFound === false
 			) {
-				setCenterText("Sorry, your URL not found 😓");
+				setCenterText("Sorry URL not found ☹️");
 			}
 		}
 	}, [allTables, id]);
