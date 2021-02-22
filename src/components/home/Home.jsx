@@ -56,34 +56,21 @@ const Home = () => {
 			});
 	};
 
+	function demo_login() {
+		setClient_loged(true);
+		set_dashboard_component(
+			<Dashboard
+				client_uid="000000000"
+				setClient_loged={setClient_loged}
+			/>
+		);
+	}
+
 	const login_component = (
 		<div className="home">
 			<GoogleButton id="google__btn" onClick={googleAuth} />
-
-			{
-				// <GoogleLogin
-				// 	clientId="172889057099-4l43ir7rlc6qkd2o5fb8c858naikodif.apps.googleusercontent.com"
-				// 	theme="dark"
-				// 	onSuccess={res=>console.log(res)}
-				// 	onFailure={res=>console.log(res)}
-				// 	// cookiePolicy="single_host_origin"
-				// />
-			}
-
-			<div className="other__login">
-				<p>OR</p>
-
-				<Button
-					className="phone__btn"
-					variant="contained"
-					color="primary"
-					startIcon={<BsPhone />}
-					onClick={() => {
-						console.log("Phone button clicked");
-					}}
-				>
-					<span className="phone__btn__text">Sing in with Phone</span>
-				</Button>
+			<div className="demo" onClick={demo_login}>
+				Demo
 			</div>
 		</div>
 	);

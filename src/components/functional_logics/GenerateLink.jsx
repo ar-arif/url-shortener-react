@@ -1,6 +1,7 @@
 import { nanoid } from "nanoid";
 import { db, firebase } from "../api/firebase";
 
+
 const GenerateLink = (fullLink, uid) => {
 	const shortID = nanoid(10);
 	const date = new Date().toDateString();

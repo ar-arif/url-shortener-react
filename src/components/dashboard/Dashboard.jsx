@@ -109,21 +109,18 @@ const Dashboard = ({ result, client_uid, setClient_loged }) => {
 						<img
 							src={
 								!user_data
-									? "https://ui-avatars.com/api/?name=&bold=true&background=000"
+									? "https://ui-avatars.com/api/?name=D&bold=true&background=0D8ABC&color=fff"
 									: user_data.profile.picture
 							}
 							alt="user_picture"
 							id="avatar"
 						/>
 						<div className="user__details">
-							<h4>{!user_data ? "" : user_data.profile.name}</h4>
+							<h4>{!user_data ? "Demo" : user_data.profile.name}</h4>
 							<h6>
-								Total Shorted:{" "}
-								{!user_table
-									? "∞"
-									: two_digit_number_converter(
-											user_table.length
-									  )}
+								{
+									!user_table ? "" : "Total Shorted: "+ two_digit_number_converter(user_table.length)
+								}
 							</h6>
 						</div>
 					</div>
@@ -131,7 +128,7 @@ const Dashboard = ({ result, client_uid, setClient_loged }) => {
 						className="sing-out__section"
 						onClick={() => {
 							localStorage.removeItem("client_id");
-							setClient_loged(false)
+							setClient_loged(false);
 						}}
 					>
 						<CgLogOut />

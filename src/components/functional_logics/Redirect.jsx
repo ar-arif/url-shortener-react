@@ -8,13 +8,52 @@ const Redirect = () => {
 	const [allTables, setAllTables] = useState([]);
 	const [centerText, setCenterText] = useState("Chacking your URL ⌛");
 	const { id } = useParams();
+	// const [idFound, setID_Found] = useState(false);
+	const [success, warning, error, info] = [
+		"#4caf50",
+		"#ff9800",
+		"#f44336",
+		"#2196f3",
+	];
+	const [background, setBackground] = useState(warning);
 	const style = {
 		height: "100vh",
 		display: "flex",
 		justifyContent: "center",
 		alignItems: "center",
 		fontFamily: "sans-serif",
+		background: background,
+		color: "white",
 	};
+
+	// useEffect(() => {
+	// 	db.collection("users").onSnapshot((snapshot) => {
+	// 		const docs = snapshot.docs;
+	// 		for (const i in docs) {
+	// 			const uid = docs[i].data().uid;
+	// 			db.doc("users/" + uid + "/tables/"+ id).onSnapshot((snapshot) => {
+	// 				const data = snapshot.data()
+
+	// 				if(!idFound && data!==undefined && data!==null && data!=="" && data.shortID===id){
+	// 					setID_Found(true);
+	// 					setBackground(success)
+	// 					setCenterText("Redirecting to URL ✈️");
+	// 					// db.doc("users/" + uid + "/tables/"+ id).update({
+	// 					// 	clicked:0
+	// 					// })
+	// 					break;
+	// 				}
+
+
+
+
+
+	// 			})
+	// 		}
+	// 	});
+	// }, [id, success, idFound]);
+
+	// ###################################################################################
 
 	// get uid of every user then setUids
 	useEffect(() => {
@@ -37,33 +76,21 @@ const Redirect = () => {
 	useEffect(() => {
 		for (let i = 0; i < allTables.length; i++) {
 			if (allTables[i].shortID === id) {
+				setBackground(success)
 				idFound = true;
 				setCenterText("Redirecting to URL ✈️");
-
-				// const c = allTables[i].clicked
-
-				// db.collection(`users/${allTables[i].uid}/tables`)
-				// 	.doc(allTables[i].shortID)
-				// 	.update({
-				// 		clicked: 1
-				// 	})
-				// 	.then(() => {
-				// 		console.log("Document successfully updated!");
-				// 	});
-
-
 				window.location.href = allTables[i].fullLink;
-				// console.log("sdsa")
 				break;
 			} else if (
 				allTables.length - 1 === i &&
 				allTables[i].shortID !== id &&
 				idFound === false
 			) {
+				setBackground(error)
 				setCenterText("Sorry URL not found ☹️");
 			}
 		}
-	}, [allTables, id]);
+	}, [allTables, id, success, error]);
 
 	return (
 		<div style={style}>

@@ -5,6 +5,13 @@
 	align-items: center;
 	flex-direction: column;
 	background: var(--dark);
+	.demo{
+		color: white;
+		font-family: sans-serif;
+		text-decoration: none;
+		margin-top: 1rem;
+		cursor: pointer;
+	}
 }
 
 p {
